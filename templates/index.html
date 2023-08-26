@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gmail Spam Identifier</title>
+    <style>
+      label {
+        display: inline-block;
+        width: 150px; /* Adjust the width as needed */
+        text-align: right;
+        margin-right: 10px;
+      }
+    </style>
+    <script>
+      {% if show_popup %}
+      window.addEventListener("DOMContentLoaded", function() {
+        alert("Incorrect credentials. Please check your email and password.");
+      });
+      {% endif %}
+    </script>
+  </head>
+  <body>
+    <h1>Gmail Spam Identifier</h1>
+    <form method="post">
+      <label for="email">Email:</label>
+      <input type="text" name="email" required /><br /><br />
+
+      <label for="password">2FA Password:</label>
+      <input type="password" name="password" required /><br /><br />
+      <p>
+        Your email must be 2FA enabled. Input your 2FA app password. More info
+        <a
+          href="https://www.lifewire.com/get-a-password-to-access-gmail-by-pop-imap-2-1171882"
+          target="_blank"
+        >
+          here</a
+        >
+      </p>
+      <p>
+        This model was trained using
+        <a
+          href="https://www.kaggle.com/datasets/venky73/spam-mails-dataset"
+          target="_blank"
+          >Kaggle's Spam Mails Dataset</a
+        >
+        and will scan 1 month's worth of emails and identified spam email will
+        be labeled as "[Imap]/Spam"
+      </p>
+      <input type="submit" value="Cleanse" />
+    </form>
+  </body>
+</html>
