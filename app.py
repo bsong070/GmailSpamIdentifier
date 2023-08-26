@@ -111,16 +111,11 @@ def index():
 
                     status, email_data = mail.uid("fetch", uid, "(RFC822)")
 
-                    # Copy the email to the spam folder using the sequence number
                     copy_result = mail.uid("COPY", uid, spam_folder_name)
-                    if copy_result[0] == "OK":
-                        print(
-                            f"Copied email with subject '{email_classification['subject']}' to '{spam_folder_name}' folder.")
-
+      
             mail.close()
             mail.logout()
         except Exception as e:
-            print(f"An error occurred: {e}")
             show_popup = True
 
     return render_template("index.html", show_popup=show_popup)
